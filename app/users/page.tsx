@@ -2,10 +2,9 @@ import { Separator } from "@/components/ui/separator";
 import { TypographyH2 } from "@/components/ui/typography";
 import { createServerSupabaseClient } from "@/lib/server-utils";
 import { redirect } from "next/navigation";
-import AddSpeciesDialog from "./add-species-dialog";
-import SpeciesCard from "./species-card";
+import ProfileCard from "./profile-card";
 
-export default async function SpeciesList() {
+export default async function UserList() {
   // Create supabase server component client and obtain user session from stored cookie
   const supabase = createServerSupabaseClient();
   const {
@@ -17,17 +16,16 @@ export default async function SpeciesList() {
     redirect("/");
   }
 
-  const { data: species } = await supabase.from("species").select("*");
+  const { data: profile } = await supabase.from("profiles").select("*");
 
   return (
     <>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-        <TypographyH2>Species List</TypographyH2>
-        <AddSpeciesDialog key={new Date().getTime()} userId={session.user.id} />
+        <TypographyH2>Users</TypographyH2>
       </div>
       <Separator className="my-4" />
       <div className="flex flex-wrap justify-center">
-        {species?.map((species) => <SpeciesCard key={species.id} userID={session.user.id} species={species} />)}
+        {profile?.map((profile) => <ProfileCard key={profile.id} profile={profile} />)}
       </div>
     </>
   );
