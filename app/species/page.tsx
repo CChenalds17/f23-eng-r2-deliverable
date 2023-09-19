@@ -17,6 +17,7 @@ export default async function SpeciesList() {
     redirect("/");
   }
 
+  // fetches species table from supabase
   const { data: species } = await supabase.from("species").select("*");
 
   return (

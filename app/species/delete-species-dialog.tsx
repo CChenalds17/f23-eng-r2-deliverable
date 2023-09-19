@@ -16,9 +16,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
-// We use zod (z) to define a schema for the "Add species" form.
-// zod handles validation of the input values with methods like .string(), .nullable(). It also processes the form inputs with .transform() before the inputs are sent to the database.
-
 export default function DeleteSpeciesDialog({ species }: { species: Species }) {
   const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);

@@ -19,9 +19,6 @@ export default function ProfileCard({ profile }: { profile: Profile }) {
         </a>
       </h4>
       <p>{profile.biography ? profile.biography : ""}</p>
-      {/* Replace with detailed view */}
-      {/* <LearnMoreDialog key={species.id} userID={userID} species={species} /> */}
-      {/* <Button className="mt-3 w-full">Learn More</Button> */}
     </div>
   );
 }

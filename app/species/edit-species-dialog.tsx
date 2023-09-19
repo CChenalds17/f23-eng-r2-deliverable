@@ -35,6 +35,7 @@ const speciesSchema = z.object({
     .nullable()
     // Transform empty string or only whitespace input to null before form submission
     .transform((val) => (val?.trim() === "" ? null : val?.trim()))
+    // Needs to be optional or else user will need to edit each field to submit
     .optional(),
   description: z
     .string()
@@ -147,7 +148,6 @@ export default function EditSpeciesDialog({ species, userId }: { species: Specie
                 name="common_name"
                 render={({ field }) => {
                   // We must extract value from field and convert a potential defaultValue of `null` to "" because inputs can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091
-                  // const { ...rest } = field;
                   return (
                     <FormItem>
                       <FormLabel>Common Name</FormLabel>
@@ -225,7 +225,6 @@ export default function EditSpeciesDialog({ species, userId }: { species: Specie
                 name="description"
                 render={({ field }) => {
                   // We must extract value from field and convert a potential defaultValue of `null` to "" because textareas can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091
-                  // const { value, ...rest } = field;
                   return (
                     <FormItem>
                       <FormLabel>Description</FormLabel>
@@ -241,9 +240,6 @@ export default function EditSpeciesDialog({ species, userId }: { species: Specie
                 }}
               />
               <div className="flex">
-                <Button type="submit" className="ml-1 mr-1 flex-auto">
-                  Done
-                </Button>
                 <Button
                   type="button"
                   className="ml-1 mr-1 flex-auto"
@@ -251,6 +247,9 @@ export default function EditSpeciesDialog({ species, userId }: { species: Specie
                   onClick={() => setOpen(false)}
                 >
                   Cancel
+                </Button>
+                <Button type="submit" className="ml-1 mr-1 flex-auto">
+                  Done
                 </Button>
               </div>
             </div>

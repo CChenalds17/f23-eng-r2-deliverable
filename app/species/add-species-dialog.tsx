@@ -233,9 +233,6 @@ export default function AddSpeciesDialog({ userId }: { userId: string }) {
                 }}
               />
               <div className="flex">
-                <Button type="submit" className="ml-1 mr-1 flex-auto">
-                  Add Species
-                </Button>
                 <Button
                   type="button"
                   className="ml-1 mr-1 flex-auto"
@@ -243,6 +240,9 @@ export default function AddSpeciesDialog({ userId }: { userId: string }) {
                   onClick={() => setOpen(false)}
                 >
                   Cancel
+                </Button>
+                <Button type="submit" className="ml-1 mr-1 flex-auto">
+                  Add Species
                 </Button>
               </div>
             </div>
