@@ -225,7 +225,7 @@ export default function EditSpeciesDialog({ species, userId }: { species: Specie
                 name="description"
                 render={({ field }) => {
                   // We must extract value from field and convert a potential defaultValue of `null` to "" because textareas can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091
-                  const { value, ...rest } = field;
+                  // const { value, ...rest } = field;
                   return (
                     <FormItem>
                       <FormLabel>Description</FormLabel>
